@@ -1,0 +1,8 @@
+_build/
+_checkouts/
+_gen/
+doc/
+cover/
+*.dump
+*.crashdump
+*.log

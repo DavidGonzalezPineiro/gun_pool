@@ -1,0 +1,26 @@
+%% @author David González Piñeiro
+%% @license Apache License, Version 2.0
+%% @see https://github.com/DavidGonzalezPineiro/gun_pool
+%% See the LICENSE file in the project root for more information.
+
+{application, gun_pool, [
+    {description, "A pool for gun OTP application"},
+    {vsn, "0.1.0"},
+    {registered, []},
+    {mod, {gun_pool_app, []}},
+    {applications, [kernel, stdlib, public_key, ssl, gun, poolboy, jiffy]},
+    {env, [
+        {pool_size, 20},
+        {pool_max_overflow, 5},
+        {connection_host, "localhost"},
+        {connection_port, 8080},
+        {connection_opts, #{}}
+    ]},
+    {kernel, [
+        {logger, [
+            {handler, default, logger_std_h, #{
+                formatter => {logger_formatter, #{template => [time, " ", pid, " ", msg, "\n"]}}
+            }}
+        ]}
+    ]}
+]}.
